@@ -9,15 +9,22 @@ import AVFoundation
 import AssetsLibrary
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
 
     //@IBOutlet weak var vid_image_view: UIImageView!
     // private var vid_frames: [UIImage] = []
     
     @IBOutlet weak var image_button_view: UIView!
     
+    @IBOutlet weak var current_frame_label: UILabel!
+    @IBOutlet weak var total_frame_label: UILabel!
+    @IBOutlet weak var class_name_label: UILabel!
+    
     private var vid_frames: [UIImage] = []
     private var img_id = 0
+    private var json_polygon_data = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
+    
+    let synthesizer = AVSpeechSynthesizer()
     
     @IBAction func prev_button(_ sender: Any) {
         if (self.img_id > 0){
@@ -98,6 +105,12 @@ class ViewController: UIViewController {
             }
         }*/
         get_image()
+        self.view.bringSubviewToFront(self.total_frame_label)
+        self.total_frame_label.text = "tf:\(500)"
+        if let localData = self.readLocalFile(forName: "polygons_vid_1") {
+            self.json_polygon_data = self.parse(jsonData: localData)
+        }
+        //print("points: ", self.json_polygon_data.frame_data[0].classes[14].contours)
     }
     
     func get_image(){
@@ -120,6 +133,8 @@ class ViewController: UIViewController {
             self.vid_frames.append(img)
             show_image()
         }
+        self.view.bringSubviewToFront(self.current_frame_label)
+        self.current_frame_label.text = "cf:\(self.img_id+1)"
     }
     
     func show_image(){
@@ -128,19 +143,96 @@ class ViewController: UIViewController {
                 view.removeFromSuperview()
             }
             image_button_view.addBackground(image: self.vid_frames[0], contentMode: .scaleAspectFit)
+            
+            
+            for cls in self.json_polygon_data.frame_data[self.img_id].classes {
+                let class_id: Int = cls.class_id
+                let color: [Int] = cls.color
+                for contour in cls.contours {
+                    var button_points: [CGPoint] = []
+                    for pnt in contour {
+                        let p = CGPoint(x: Int(Double(pnt[0])/1.48), y: Int(Double(pnt[1])/1.48))
+                        button_points.append(p)
+                    }
+                    let polygon = PolyButton(points: button_points,
+                                             color: UIColor(red: CGFloat(color[0])/255.0,
+                                                            green: CGFloat(color[1])/255.0,
+                                                            blue: CGFloat(color[2])/255.0, alpha: 0.5),
+                                             frame: self.view.bounds)
+                    polygon.tag = class_id
+                    polygon.addTarget(self, action: #selector(didPressPolygon(_:)), for: UIControl.Event.touchUpInside)
+                    image_button_view.addSubview(polygon)
+                }
+            }
         }
     }
     
-    @objc func didPressTriangle(_ sender: AnyObject?) {
-        print("Triangle")
+    /*func readJSONFromFile(fileName: String) {
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let fileUrl = URL(fileURLWithPath: path)
+                // Getting data from JSON file using the file URL
+                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+                let decoder = JSONDecoder()
+                let json_data = try decoder.decode(JsonData.self, from: data)
+                //json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("json data --->> \n\(json_data)")
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }*/
+    
+    private func readLocalFile(forName name: String) -> Data? {
+        do {
+            if let bundlePath = Bundle.main.path(forResource: name,
+                                                 ofType: "json"),
+                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                return jsonData
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
     }
     
-    @objc func didPressSquare(_ sender: AnyObject?) {
-        print("Square")
+    private func parse(jsonData: Data) -> JsonData {
+        var decodedData = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
+        do {
+            decodedData = try JSONDecoder().decode(JsonData.self,
+                                                       from: jsonData)
+            
+            //print("points: ", decodedData.frame_data[0].classes[14].contours)
+            //print("===================================")
+            return decodedData
+        } catch {
+            print(error)
+        }
+        return decodedData
     }
     
-    @objc func didPressPentagon(_ sender: AnyObject?) {
-        print("Pentagon")
+    @objc func didPressPolygon(_ sender: UIButton) {
+        let classes = [
+            0:  "unlabeled", 1:  "road",   2:  "sidewalk",      3: "building",     4:  "wall",
+            5:  "fence",     6:  "pole",   7:  "traffic light", 8: "traffic sign", 9:  "vegetation",
+            10: "terrain",   11: "sky",    12: "person",        13: "rider",       14: "car",
+            15: "truck",     16: "bus",    17: "train",         18: "motorcycle",  19: "bicycle",
+            20: "dynamic",   21: "ground", 22: "parking",       23: "rail track",  24: "guard rail",
+            25: "bridge",    26: "tunnel", 27: "pole group",    28: "caravan",     29: "trailer"
+        ]
+        print("You clicked on : \(classes[sender.tag]!)")
+        self.view.bringSubviewToFront(self.class_name_label)
+        self.class_name_label.text = "\(classes[sender.tag]!)"
+        let text = "You clicked on \(classes[sender.tag]!)"
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        // utterance.rate = 1.0
+        synthesizer.speak(utterance)
+    }
+    
+    @objc func action_func(_ sender: UIButton) {
+        print("action_func")
     }
     
     override func didReceiveMemoryWarning() {

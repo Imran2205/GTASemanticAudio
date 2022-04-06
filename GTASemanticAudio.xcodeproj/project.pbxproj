@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2B1485A427FC771C00D1C0CD /* vid_1_blended.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */; };
-		2B1485A627FCA1D600D1C0CD /* PolygonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1485A527FCA1D600D1C0CD /* PolygonButton.swift */; };
-		2B1485A827FCB8D100D1C0CD /* polygons_vid_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1485A727FCB8D100D1C0CD /* polygons_vid_1.json */; };
-		2B1485AA27FCB8DA00D1C0CD /* label_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1485A927FCB8DA00D1C0CD /* label_dictionary.json */; };
+		2B21372A27FDCAC200082389 /* polygons_vid_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B21372927FDCAC200082389 /* polygons_vid_1.json */; };
+		2B21372C27FDEA8000082389 /* PolyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21372B27FDEA8000082389 /* PolyButton.swift */; };
 		2B22713F27FCC01B007AEF20 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */; };
+		2B99BC1B27FDC70800E993A0 /* JSONStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B99BC1A27FDC70800E993A0 /* JSONStruct.swift */; };
 		2BC8F37527FB6E7400C2B92F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */; };
 		2BC8F37727FB6E7400C2B92F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */; };
 		2BC8F37927FB6E7400C2B92F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC8F37827FB6E7400C2B92F /* ViewController.swift */; };
@@ -22,10 +22,10 @@
 
 /* Begin PBXFileReference section */
 		2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = vid_1_blended.mp4; path = ../../../../../../Downloads/vid_1/vid_1_blended.mp4; sourceTree = "<group>"; };
-		2B1485A527FCA1D600D1C0CD /* PolygonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonButton.swift; sourceTree = "<group>"; };
-		2B1485A727FCB8D100D1C0CD /* polygons_vid_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_vid_1.json; path = ../../../../../../Downloads/vid_1/polygons_vid_1.json; sourceTree = "<group>"; };
-		2B1485A927FCB8DA00D1C0CD /* label_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = label_dictionary.json; path = ../../../../../../Downloads/vid_1/label_dictionary.json; sourceTree = "<group>"; };
+		2B21372927FDCAC200082389 /* polygons_vid_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_vid_1.json; path = ../../../../../../Downloads/vid_1/polygons_vid_1.json; sourceTree = "<group>"; };
+		2B21372B27FDEA8000082389 /* PolyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyButton.swift; sourceTree = "<group>"; };
 		2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		2B99BC1A27FDC70800E993A0 /* JSONStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStruct.swift; sourceTree = "<group>"; };
 		2BC8F37127FB6E7400C2B92F /* GTASemanticAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTASemanticAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +66,7 @@
 		2BC8F37327FB6E7400C2B92F /* GTASemanticAudio */ = {
 			isa = PBXGroup;
 			children = (
-				2B1485A927FCB8DA00D1C0CD /* label_dictionary.json */,
-				2B1485A727FCB8D100D1C0CD /* polygons_vid_1.json */,
+				2B21372927FDCAC200082389 /* polygons_vid_1.json */,
 				2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */,
 				2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */,
 				2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */,
@@ -76,8 +75,9 @@
 				2BC8F37D27FB6E7500C2B92F /* Assets.xcassets */,
 				2BC8F37F27FB6E7500C2B92F /* LaunchScreen.storyboard */,
 				2BC8F38227FB6E7500C2B92F /* Info.plist */,
-				2B1485A527FCA1D600D1C0CD /* PolygonButton.swift */,
 				2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */,
+				2B99BC1A27FDC70800E993A0 /* JSONStruct.swift */,
+				2B21372B27FDEA8000082389 /* PolyButton.swift */,
 			);
 			path = GTASemanticAudio;
 			sourceTree = "<group>";
@@ -142,8 +142,7 @@
 			files = (
 				2B1485A427FC771C00D1C0CD /* vid_1_blended.mp4 in Resources */,
 				2BC8F38127FB6E7500C2B92F /* LaunchScreen.storyboard in Resources */,
-				2B1485AA27FCB8DA00D1C0CD /* label_dictionary.json in Resources */,
-				2B1485A827FCB8D100D1C0CD /* polygons_vid_1.json in Resources */,
+				2B21372A27FDCAC200082389 /* polygons_vid_1.json in Resources */,
 				2BC8F37E27FB6E7500C2B92F /* Assets.xcassets in Resources */,
 				2BC8F37C27FB6E7400C2B92F /* Main.storyboard in Resources */,
 			);
@@ -158,8 +157,9 @@
 			files = (
 				2B22713F27FCC01B007AEF20 /* UIViewExtension.swift in Sources */,
 				2BC8F37927FB6E7400C2B92F /* ViewController.swift in Sources */,
+				2B99BC1B27FDC70800E993A0 /* JSONStruct.swift in Sources */,
 				2BC8F37527FB6E7400C2B92F /* AppDelegate.swift in Sources */,
-				2B1485A627FCA1D600D1C0CD /* PolygonButton.swift in Sources */,
+				2B21372C27FDEA8000082389 /* PolyButton.swift in Sources */,
 				2BC8F37727FB6E7400C2B92F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
