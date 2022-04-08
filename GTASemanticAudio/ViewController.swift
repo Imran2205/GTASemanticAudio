@@ -24,6 +24,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
     private var img_id = 0
     private var json_polygon_data = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
     
+    let screenSize: CGRect = UIScreen.main.bounds
+    
     let synthesizer = AVSpeechSynthesizer()
     
     @IBAction func prev_button(_ sender: Any) {
@@ -104,6 +106,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
                 show_image()
             }
         }*/
+        // image_button_view.frame.size.height = screenSize.height
+        // image_button_view.frame.size.height = 1.97 * screenSize.height
         get_image()
         self.view.bringSubviewToFront(self.total_frame_label)
         self.total_frame_label.text = "tf:\(500)"
@@ -151,7 +155,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
                 for contour in cls.contours {
                     var button_points: [CGPoint] = []
                     for pnt in contour {
-                        let p = CGPoint(x: Int(Double(pnt[0])/1.48), y: Int(Double(pnt[1])/1.48))
+                        let p = CGPoint(x: Int(Double(pnt[0])/1.49 + 1), y: Int(Double(pnt[1])/1.49 + 1))
                         button_points.append(p)
                     }
                     let polygon = PolyButton(points: button_points,
@@ -224,10 +228,10 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
         print("You clicked on : \(classes[sender.tag]!)")
         self.view.bringSubviewToFront(self.class_name_label)
         self.class_name_label.text = "\(classes[sender.tag]!)"
-        let text = "You clicked on \(classes[sender.tag]!)"
+        let text = "\(classes[sender.tag]!)"
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        // utterance.rate = 1.0
+        utterance.rate = 0.5
         synthesizer.speak(utterance)
     }
     
