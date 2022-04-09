@@ -30,6 +30,10 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
     var screen_height: Double = 0.0
     var screen_width: Double = 0.0
     
+    var multi = 0.0
+    var multi_y = 0.0
+    var multi_y_but = 0.0
+    
     var img_to_frame_rat = 0.0
     
     let synthesizer = AVSpeechSynthesizer()
@@ -60,33 +64,61 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let p1 = CGPoint(x: 200, y: 50.0)
-        let p2 = CGPoint(x: 300, y: 150.0)
-        let p3 = CGPoint(x: 100, y: 150.0)
+        if (screenSize.height < screenSize.width){
+            screen_height = screenSize.height
+            screen_width = screenSize.width
+        }
+        else {
+            screen_height = screenSize.width
+            screen_width = screenSize.height
+        }
         
-        let triangle = PolyButton(points: [p1,p2,p3], color: UIColor.green, frame: self.view.bounds)
-        triangle.addTarget(self, action: #selector(didPressTriangle(_ :)), for: UIControl.Event.touchUpInside)
-
-        let p4 = CGPoint(x: 150.0, y: 200.0)
-        let p5 = CGPoint(x: 250.0, y: 200.0)
-        let p6 = CGPoint(x: 250.0, y: 300.0)
-        let p7 = CGPoint(x: 150.0, y: 300.0)
+        if (screen_width/screen_height > 1.9) {
+            multi = 0.8975
+            multi_y = 0.0513
+            multi_y_but = 0.07109
+            next_but.titleLabel?.font = .systemFont(ofSize: 17)
+            prev_but.titleLabel?.font = .systemFont(ofSize: 17)
+        }
+        else {
+            multi = 0.735
+            multi_y = 0.13
+            multi_y_but = 0.08
+            next_but.titleLabel?.font = .systemFont(ofSize: 8)
+            prev_but.titleLabel?.font = .systemFont(ofSize: 8)
+        }
         
-        let square = PolyButton(points: [p4,p5,p6,p7], color: UIColor.red, frame: self.view.bounds)
-        square.addTarget(self, action: #selector(didPressSquare(_ :)), for: UIControl.Event.touchUpInside)
+        image_button_view.frame.origin.x = 0.0912 * screen_width
+        image_button_view.frame.origin.y = multi_y * screen_height
+        image_button_view.frame.size.height = screen_height * multi
+        image_button_view.frame.size.width = 1.97 * screen_height * multi
         
-        let p8 = CGPoint(x: 200.0, y: 350.0)
-        let p9 = CGPoint(x: 105.0, y: 419.0)
-        let p10 = CGPoint(x: 141.0, y: 531.0)
-        let p11 = CGPoint(x: 259.0, y: 531.0)
-        let p12 = CGPoint(x: 295.0, y: 419.0)
+        current_frame_label.frame.origin.x = 0.0106 * screen_width
+        current_frame_label.frame.origin.y = 0.0513 * screen_height
+        current_frame_label.frame.size.height = screen_height * 0.05213
+        current_frame_label.frame.size.width = screen_width * 0.07109
         
-        let pentagon = PolyButton(points: [p8,p9,p10,p11,p12], color: UIColor.blue, frame: self.view.bounds)
-        pentagon.addTarget(self, action: #selector(didPressPentagon(_ :)), for: UIControl.Event.touchUpInside)
+        total_frame_label.frame.origin.x = 0.91825 * screen_width
+        total_frame_label.frame.origin.y = 0.0513 * screen_height
+        total_frame_label.frame.size.height = screen_height * 0.05213
+        total_frame_label.frame.size.width = screen_width * 0.07109
         
-        self.view.addSubview(triangle)
-        self.view.addSubview(square)
-        self.view.addSubview(pentagon)*/
+        class_name_label.frame.origin.x = 0.91825 * screen_width
+        class_name_label.frame.origin.y = 0.24359 * screen_height
+        class_name_label.frame.size.height = screen_height * 0.5128
+        class_name_label.frame.size.width = screen_width * 0.05924
+        
+        next_but.frame.origin.x = 0.91825 * screen_width
+        next_but.frame.origin.y = 0.8231 * screen_height
+        next_but.frame.size.height = screen_height * 0.07949
+        next_but.frame.size.width = screen_width * multi_y_but
+        
+        prev_but.frame.origin.x = 0.0106 * screen_width
+        prev_but.frame.origin.y = 0.8231 * screen_height
+        prev_but.frame.size.height = screen_height * 0.07949
+        prev_but.frame.size.width = screen_width * multi_y_but
+        
+        img_to_frame_rat = 520.0 / image_button_view.frame.size.height
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -112,46 +144,6 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
                 show_image()
             }
         }*/
-        if (screenSize.height < screenSize.width){
-            screen_height = screenSize.height
-            screen_width = screenSize.width
-        }
-        else {
-            screen_height = screenSize.width
-            screen_width = screenSize.height
-        }
-        
-        image_button_view.frame.origin.x = 0.0912 * screen_width
-        image_button_view.frame.origin.y = 0.0513 * screen_height
-        image_button_view.frame.size.height = screen_height * 0.8975
-        image_button_view.frame.size.width = 1.97  * screen_height * 0.8975
-        
-        current_frame_label.frame.origin.x = 0.0106 * screen_width
-        current_frame_label.frame.origin.y = 0.0513 * screen_height
-        current_frame_label.frame.size.height = screen_height * 0.05213
-        current_frame_label.frame.size.width = screen_width * 0.07109
-        
-        total_frame_label.frame.origin.x = 0.91825 * screen_width
-        total_frame_label.frame.origin.y = 0.0513 * screen_height
-        total_frame_label.frame.size.height = screen_height * 0.05213
-        total_frame_label.frame.size.width = screen_width * 0.07109
-        
-        class_name_label.frame.origin.x = 0.91825 * screen_width
-        class_name_label.frame.origin.y = 0.24359 * screen_height
-        class_name_label.frame.size.height = screen_height * 0.5128
-        class_name_label.frame.size.width = screen_width * 0.05924
-        
-        next_but.frame.origin.x = 0.91825 * screen_width
-        next_but.frame.origin.y = 0.8231 * screen_height
-        next_but.frame.size.height = screen_height * 0.07949
-        next_but.frame.size.width = screen_width * 0.07109
-        
-        prev_but.frame.origin.x = 0.0106 * screen_width
-        prev_but.frame.origin.y = 0.8231 * screen_height
-        prev_but.frame.size.height = screen_height * 0.07949
-        prev_but.frame.size.width = screen_width * 0.07109
-        
-        img_to_frame_rat = 520.0 / image_button_view.frame.size.height
         
         get_image()
         self.view.bringSubviewToFront(self.total_frame_label)
