@@ -19,12 +19,18 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
     @IBOutlet weak var current_frame_label: UILabel!
     @IBOutlet weak var total_frame_label: UILabel!
     @IBOutlet weak var class_name_label: UILabel!
+    @IBOutlet weak var next_but: UIButton!
+    @IBOutlet weak var prev_but: UIButton!
     
     private var vid_frames: [UIImage] = []
     private var img_id = 0
     private var json_polygon_data = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
     
     let screenSize: CGRect = UIScreen.main.bounds
+    var screen_height: Double = 0.0
+    var screen_width: Double = 0.0
+    
+    var img_to_frame_rat = 0.0
     
     let synthesizer = AVSpeechSynthesizer()
     
@@ -106,8 +112,47 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
                 show_image()
             }
         }*/
-        // image_button_view.frame.size.height = screenSize.height
-        // image_button_view.frame.size.height = 1.97 * screenSize.height
+        if (screenSize.height < screenSize.width){
+            screen_height = screenSize.height
+            screen_width = screenSize.width
+        }
+        else {
+            screen_height = screenSize.width
+            screen_width = screenSize.height
+        }
+        
+        image_button_view.frame.origin.x = 0.0912 * screen_width
+        image_button_view.frame.origin.y = 0.0513 * screen_height
+        image_button_view.frame.size.height = screen_height * 0.8975
+        image_button_view.frame.size.width = 1.97  * screen_height * 0.8975
+        
+        current_frame_label.frame.origin.x = 0.0106 * screen_width
+        current_frame_label.frame.origin.y = 0.0513 * screen_height
+        current_frame_label.frame.size.height = screen_height * 0.05213
+        current_frame_label.frame.size.width = screen_width * 0.07109
+        
+        total_frame_label.frame.origin.x = 0.91825 * screen_width
+        total_frame_label.frame.origin.y = 0.0513 * screen_height
+        total_frame_label.frame.size.height = screen_height * 0.05213
+        total_frame_label.frame.size.width = screen_width * 0.07109
+        
+        class_name_label.frame.origin.x = 0.91825 * screen_width
+        class_name_label.frame.origin.y = 0.24359 * screen_height
+        class_name_label.frame.size.height = screen_height * 0.5128
+        class_name_label.frame.size.width = screen_width * 0.05924
+        
+        next_but.frame.origin.x = 0.91825 * screen_width
+        next_but.frame.origin.y = 0.8231 * screen_height
+        next_but.frame.size.height = screen_height * 0.07949
+        next_but.frame.size.width = screen_width * 0.07109
+        
+        prev_but.frame.origin.x = 0.0106 * screen_width
+        prev_but.frame.origin.y = 0.8231 * screen_height
+        prev_but.frame.size.height = screen_height * 0.07949
+        prev_but.frame.size.width = screen_width * 0.07109
+        
+        img_to_frame_rat = 520.0 / image_button_view.frame.size.height
+        
         get_image()
         self.view.bringSubviewToFront(self.total_frame_label)
         self.total_frame_label.text = "tf:\(500)"
@@ -155,7 +200,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate  {
                 for contour in cls.contours {
                     var button_points: [CGPoint] = []
                     for pnt in contour {
-                        let p = CGPoint(x: Int(Double(pnt[0])/1.49 + 1), y: Int(Double(pnt[1])/1.49 + 1))
+                        let p = CGPoint(x: (Double(pnt[0])/img_to_frame_rat + 1), y: (Double(pnt[1])/img_to_frame_rat + 1))
                         button_points.append(p)
                     }
                     let polygon = PolyButton(points: button_points,
