@@ -18,6 +18,18 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var fps:Float = 0.0
     var paused:Bool = true
     
+    var vid_height = 0.0
+    var vid_width = 0.0
+    
+    var vid_container_height = 350.0
+    var vid_container_width = 350.0
+    
+    var img_to_frame_rat_h = 0.0
+    var img_to_frame_rat_w = 0.0
+    
+    var point_offset_w = 0.0
+    var original_frame_wodth = 690.0
+    
     var img_id = 0
     var json_polygon_data = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
     
@@ -51,11 +63,20 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
-        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        vid_container_width = (vid_width/vid_height)*vid_container_height
+        
+        img_to_frame_rat_h = vid_height/vid_container_height
+        img_to_frame_rat_w = vid_width/vid_container_width
+        
+        point_offset_w = (original_frame_wodth - vid_container_width) / 2.0
         
         if let localData = self.readLocalFile(forName: json_file) {
             self.json_polygon_data = self.parse(jsonData: localData)
@@ -76,15 +97,62 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
 
     @IBAction func play(_ sender: Any) {
+        self.paused = false
         player?.play()
+        self.remove_views()
     }
 
     @IBAction func stop(_ sender: Any) {
+        self.paused = true
         player?.pause()
         usleep(100000)
         self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
         self.img_id = Int(self.currentTime*self.fps)
         print(self.img_id)
+        self.show_image()
+    }
+    
+    func show_image(){
+        DispatchQueue.main.async { [self] in
+            for view in image_button_view.subviews {
+                //if let item = view as? UIButton
+                //{
+                    view.removeFromSuperview()
+                //}
+            }
+
+            for cls in self.json_polygon_data.frame_data[self.img_id].classes {
+                let class_id: Int = cls.class_id
+                let color: [Int] = cls.color
+                for contour in cls.contours {
+                    var button_points: [CGPoint] = []
+                    for pnt in contour {
+                        let p = CGPoint(x: (Double(pnt[0])/img_to_frame_rat_w + 1 + point_offset_w), y: (Double(pnt[1])/img_to_frame_rat_h + 1))
+                        button_points.append(p)
+                    }
+                    let polygon = PolyButton(points: button_points,
+                                             color: UIColor(red: CGFloat(color[0])/255.0,
+                                                            green: CGFloat(color[1])/255.0,
+                                                            blue: CGFloat(color[2])/255.0, alpha: 0.5),
+                                             frame: self.view.bounds)
+                    polygon.tag = class_id
+                    polygon.addTarget(self, action: #selector(didPressPolygon(_:)), for: UIControl.Event.touchUpInside)
+                    image_button_view.addSubview(polygon)
+                    image_button_view.bringSubviewToFront(polygon)
+                }
+            }
+            
+            
+        }
+    }
+    
+    func remove_views(){
+        for view in image_button_view.subviews {
+            //if let item = view as? UIButton
+            //{
+                view.removeFromSuperview()
+            //}
+        }
     }
     
     private func readLocalFile(forName name: String) -> Data? {
@@ -137,7 +205,18 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     @objc func doubleTapped() {
         self.paused = !self.paused
-        
+        if(self.paused){
+            player?.pause()
+            usleep(100000)
+            self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
+            self.img_id = Int(self.currentTime*self.fps)
+            print(self.img_id)
+            self.show_image()
+        }
+        else{
+            player?.play()
+            self.remove_views()
+        }
     }
     
     @objc func action_func(_ sender: UIButton) {

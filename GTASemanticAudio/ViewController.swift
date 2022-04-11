@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     let video_files:[String] = ["vid_1_blended", "vid_2_blended"]
     let json_files:[String] = ["polygons_vid_1", "polygons_vid_2"]
     
+    let vid_heights:[Double] = [520, 576]
+    let vid_widths:[Double] = [1024, 1024]
+    
     @IBAction func video_1_view(_ sender: Any) {
         switch_view_func(index: 0)
     }
@@ -88,6 +91,8 @@ class ViewController: UIViewController {
         }
         vc.video_file = video_files[index]
         vc.json_file = json_files[index]
+        vc.vid_height = vid_heights[index]
+        vc.vid_width = vid_widths[index]
         present(vc, animated: true)
     }
     
