@@ -11,74 +11,88 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GTASemanticAudio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main_view" id="BYZ-38-t0r" customClass="ViewController" customModule="GTASemanticAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-cC-G5H">
-                                <rect key="frame" x="9" y="20" width="60" height="20.333333333333332"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" id="HnF-PG-u5M">
-                                <rect key="frame" x="77" y="20" width="690" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-FP-jHV">
-                                <rect key="frame" x="775" y="20" width="60" height="20.333333333333332"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVb-fZ-A3C">
-                                <rect key="frame" x="9" y="321" width="60" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.53227335210000004" green="0.81909054520000002" blue="0.99550122019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Prev">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="prev_button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z8H-cC-wRe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWp-dc-ou8">
-                                <rect key="frame" x="775" y="321" width="60" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.53227335210000004" green="0.81909054520000002" blue="0.99550122019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Next">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="next_button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZa-Zc-5xL"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="class" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="38" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-Jy-W2x">
-                                <rect key="frame" x="775" y="95" width="50" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Y2J-pI-WRe">
+                                <rect key="frame" x="217" y="112" width="411.33333333333326" height="167"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="203" translatesAutoresizingMaskIntoConstraints="NO" id="ZBA-Kq-Afj">
+                                        <rect key="frame" x="0.0" y="0.0" width="411.33333333333331" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adT-cS-rRA">
+                                                <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video Play 1"/>
+                                                <connections>
+                                                    <action selector="play_vid_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WPm-Rs-zRH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dud-V1-b0o">
+                                                <rect key="frame" x="307.33333333333326" y="0.0" width="104" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video Play 2"/>
+                                                <connections>
+                                                    <action selector="play_vid_2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Te1-7e-LCz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="264" translatesAutoresizingMaskIntoConstraints="NO" id="0gu-4R-3lL">
+                                        <rect key="frame" x="0.0" y="68" width="411.33333333333331" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLM-BT-0JI">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video 1"/>
+                                                <connections>
+                                                    <action selector="video_1_play_view:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nO5-Ch-Rkm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvB-hO-9Hf">
+                                                <rect key="frame" x="337.66666666666663" y="0.0" width="73.666666666666686" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video 2"/>
+                                                <connections>
+                                                    <action selector="video_2_play_view:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jly-kL-Gce"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="168" translatesAutoresizingMaskIntoConstraints="NO" id="znD-tG-ab3">
+                                        <rect key="frame" x="0.0" y="136" width="411.33333333333331" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxZ-Eo-5ND">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.66666666666667" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video 1 frames"/>
+                                                <connections>
+                                                    <action selector="video_1_view:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTn-uP-fnp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MM5-az-xy6">
+                                                <rect key="frame" x="289.66666666666663" y="0.0" width="121.66666666666669" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Video 2 frames"/>
+                                                <connections>
+                                                    <action selector="video_2_view:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XUA-l4-dnh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y2J-pI-WRe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="csT-aa-rdC"/>
+                            <constraint firstItem="Y2J-pI-WRe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sNB-ui-oVo"/>
+                        </constraints>
                         <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                     </view>
-                    <connections>
-                        <outlet property="class_name_label" destination="ur6-Jy-W2x" id="WDE-Rh-0ct"/>
-                        <outlet property="current_frame_label" destination="JJM-cC-G5H" id="pPO-p6-ZLk"/>
-                        <outlet property="image_button_view" destination="HnF-PG-u5M" id="cqN-KQ-uFT"/>
-                        <outlet property="next_but" destination="YWp-dc-ou8" id="xag-h9-2YJ"/>
-                        <outlet property="prev_but" destination="HVb-fZ-A3C" id="OeD-Nj-Mn9"/>
-                        <outlet property="total_frame_label" destination="kwz-FP-jHV" id="jMW-PD-PXK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

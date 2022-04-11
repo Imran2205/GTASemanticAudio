@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B1485A427FC771C00D1C0CD /* vid_1_blended.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */; };
+		2B1AB372280478B000536112 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1AB371280478B000536112 /* VideoPlayer.storyboard */; };
+		2B1AB3742804794100536112 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AB3732804794100536112 /* VideoPlayerViewController.swift */; };
 		2B21372A27FDCAC200082389 /* polygons_vid_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B21372927FDCAC200082389 /* polygons_vid_1.json */; };
 		2B21372C27FDEA8000082389 /* PolyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21372B27FDEA8000082389 /* PolyButton.swift */; };
 		2B22713F27FCC01B007AEF20 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */; };
@@ -21,10 +23,15 @@
 		2BCB5F6E2802B3E200079289 /* VideoScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCB5F6D2802B3E200079289 /* VideoScreen.storyboard */; };
 		2BCB5F702802BD5200079289 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB5F6F2802BD5200079289 /* VideoViewController.swift */; };
 		2BCB5F722802E35000079289 /* vid_2_blended.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2BCB5F712802E35000079289 /* vid_2_blended.mp4 */; };
+		2BCB5F782802F2F900079289 /* polygons_vid_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BCB5F772802F2F900079289 /* polygons_vid_2.json */; };
+		2BCB5F7A2803544100079289 /* VideoFrameScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCB5F792803544100079289 /* VideoFrameScreen.storyboard */; };
+		2BCB5F7C280354C900079289 /* VideoFrmaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB5F7B280354C900079289 /* VideoFrmaeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = vid_1_blended.mp4; path = ../../../../../../Downloads/vid_1/vid_1_blended.mp4; sourceTree = "<group>"; };
+		2B1AB371280478B000536112 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
+		2B1AB3732804794100536112 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		2B21372927FDCAC200082389 /* polygons_vid_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_vid_1.json; path = ../../../../../../Downloads/vid_1/polygons_vid_1.json; sourceTree = "<group>"; };
 		2B21372B27FDEA8000082389 /* PolyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyButton.swift; sourceTree = "<group>"; };
 		2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -40,6 +47,9 @@
 		2BCB5F6D2802B3E200079289 /* VideoScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoScreen.storyboard; sourceTree = "<group>"; };
 		2BCB5F6F2802BD5200079289 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		2BCB5F712802E35000079289 /* vid_2_blended.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = vid_2_blended.mp4; path = ../../../../../../Downloads/vid_2/vid_2_blended.mp4; sourceTree = "<group>"; };
+		2BCB5F772802F2F900079289 /* polygons_vid_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_vid_2.json; path = ../../../../../../Downloads/vid_2/polygons_vid_2.json; sourceTree = "<group>"; };
+		2BCB5F792803544100079289 /* VideoFrameScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoFrameScreen.storyboard; sourceTree = "<group>"; };
+		2BCB5F7B280354C900079289 /* VideoFrmaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFrmaeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +83,19 @@
 			isa = PBXGroup;
 			children = (
 				2B21372927FDCAC200082389 /* polygons_vid_1.json */,
+				2BCB5F772802F2F900079289 /* polygons_vid_2.json */,
 				2B1485A327FC771C00D1C0CD /* vid_1_blended.mp4 */,
 				2BCB5F712802E35000079289 /* vid_2_blended.mp4 */,
 				2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */,
 				2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */,
 				2BC8F37827FB6E7400C2B92F /* ViewController.swift */,
 				2BCB5F6F2802BD5200079289 /* VideoViewController.swift */,
+				2BCB5F7B280354C900079289 /* VideoFrmaeViewController.swift */,
+				2B1AB3732804794100536112 /* VideoPlayerViewController.swift */,
 				2BC8F37A27FB6E7400C2B92F /* Main.storyboard */,
 				2BCB5F6D2802B3E200079289 /* VideoScreen.storyboard */,
+				2BCB5F792803544100079289 /* VideoFrameScreen.storyboard */,
+				2B1AB371280478B000536112 /* VideoPlayer.storyboard */,
 				2BC8F37D27FB6E7500C2B92F /* Assets.xcassets */,
 				2BC8F37F27FB6E7500C2B92F /* LaunchScreen.storyboard */,
 				2BC8F38227FB6E7500C2B92F /* Info.plist */,
@@ -150,12 +165,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCB5F6E2802B3E200079289 /* VideoScreen.storyboard in Resources */,
+				2BCB5F782802F2F900079289 /* polygons_vid_2.json in Resources */,
 				2BCB5F722802E35000079289 /* vid_2_blended.mp4 in Resources */,
 				2B1485A427FC771C00D1C0CD /* vid_1_blended.mp4 in Resources */,
 				2BC8F38127FB6E7500C2B92F /* LaunchScreen.storyboard in Resources */,
 				2B21372A27FDCAC200082389 /* polygons_vid_1.json in Resources */,
 				2BC8F37E27FB6E7500C2B92F /* Assets.xcassets in Resources */,
+				2BCB5F7A2803544100079289 /* VideoFrameScreen.storyboard in Resources */,
 				2BC8F37C27FB6E7400C2B92F /* Main.storyboard in Resources */,
+				2B1AB372280478B000536112 /* VideoPlayer.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +186,8 @@
 			files = (
 				2B22713F27FCC01B007AEF20 /* UIViewExtension.swift in Sources */,
 				2BCB5F702802BD5200079289 /* VideoViewController.swift in Sources */,
+				2BCB5F7C280354C900079289 /* VideoFrmaeViewController.swift in Sources */,
+				2B1AB3742804794100536112 /* VideoPlayerViewController.swift in Sources */,
 				2BC8F37927FB6E7400C2B92F /* ViewController.swift in Sources */,
 				2B99BC1B27FDC70800E993A0 /* JSONStruct.swift in Sources */,
 				2BC8F37527FB6E7400C2B92F /* AppDelegate.swift in Sources */,
