@@ -87,6 +87,7 @@ class ViewController: UIViewController {
             return
         }
         vc.video_file = video_files[index]
+        vc.json_file = json_files[index]
         present(vc, animated: true)
     }
     
