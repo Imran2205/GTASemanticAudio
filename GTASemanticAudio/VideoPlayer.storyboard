@@ -75,6 +75,13 @@
                                     <action selector="back_button:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lla-46-za6"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Acp-0J-C2i">
+                                <rect key="frame" x="75" y="10" width="694" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="slider_value_changed:" destination="Y6W-OH-hqX" eventType="valueChanged" id="naP-Rx-jv6"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,11 +92,12 @@
                         <outlet property="image_button_view" destination="xsH-uu-XP5" id="VvI-1K-Emy"/>
                         <outlet property="next_but" destination="ll8-iD-dta" id="eqK-JG-ybk"/>
                         <outlet property="prev_but" destination="b7g-ez-CHB" id="RML-Xa-VjK"/>
+                        <outlet property="vid_progress_slider" destination="Acp-0J-C2i" id="TT2-sb-CMi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="117"/>
+            <point key="canvasLocation" x="70.379146919431278" y="116.92307692307692"/>
         </scene>
     </scenes>
     <resources>

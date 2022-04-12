@@ -36,12 +36,15 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var player: AVPlayer!
     let synthesizer = AVSpeechSynthesizer()
     
+    var timeObserver: Any?
+    
     @IBOutlet weak var image_button_view: UIView!
     
     @IBOutlet weak var class_name_label: UILabel!
     @IBOutlet weak var prev_but: UIButton!
     @IBOutlet weak var next_but: UIButton!
     @IBOutlet weak var back_but: UIButton!
+    @IBOutlet weak var vid_progress_slider: UISlider!
     
     
     @IBAction func back_button(_ sender: Any) {
@@ -51,6 +54,20 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeRight
+    }
+    
+    @IBAction func slider_value_changed(_ sender: Any) {
+        player?.pause()
+        let seconds : Int64 = Int64(vid_progress_slider.value)
+        let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+        
+        player!.seek(to: targetTime, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+        
+        //if player!.rate == 0
+        //{
+        //    player?.play()
+        //}
+        self.remove_views()
     }
     
     override var shouldAutorotate: Bool {
@@ -93,8 +110,42 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.image_button_view.bounds
         self.image_button_view.layer.addSublayer(playerLayer)
+        
+        vid_progress_slider.minimumValue = 0
+                
+        let duration : CMTime = asset!.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+        
+        vid_progress_slider.maximumValue = Float(seconds)
+        print(seconds)
+        vid_progress_slider.isContinuous = true
+        vid_progress_slider.tintColor = UIColor.green
+        
+        //vid_progress_slider.addTarget(self, action: #selector(self.slider_value_changed(_:)), for: .valueChanged)
+
+        self.view.addSubview(vid_progress_slider)
+        
+        let interval = CMTime(seconds: 0.01, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        timeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { elapsedTime in
+            self.updateVideoPlayerSlider()
+        })
     }
     
+    func updateVideoPlayerSlider() {
+        guard let currentTime = player?.currentTime() else { return }
+        let currentTimeInSeconds = CMTimeGetSeconds(currentTime)
+        // print(currentTimeInSeconds)
+        vid_progress_slider.value = Float(currentTimeInSeconds)
+        /*if let currentItem = player?.currentItem {
+            let duration = currentItem.duration
+            if (CMTIME_IS_INVALID(duration)) {
+                return;
+            }
+            let currentTime = currentItem.currentTime()
+            vid_progress_slider.value = Float(CMTimeGetSeconds(currentTime) / CMTimeGetSeconds(duration))
+        }*/
+    }
+
 
     @IBAction func play(_ sender: Any) {
         self.paused = false
@@ -108,6 +159,9 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         usleep(100000)
         self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
         self.img_id = Int(self.currentTime*self.fps)
+        if (Float(self.img_id) > (self.currentTime*self.fps)){
+            self.img_id = self.img_id - 1
+        }
         print(self.img_id)
         self.show_image()
     }
@@ -210,6 +264,9 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
             usleep(100000)
             self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
             self.img_id = Int(self.currentTime*self.fps)
+            if (Float(self.img_id) > (self.currentTime*self.fps)){
+                self.img_id = self.img_id - 1
+            }
             print(self.img_id)
             self.show_image()
         }
