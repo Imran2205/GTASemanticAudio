@@ -11,29 +11,31 @@ class ViewController: UIViewController {
     
     // var view_switchewr: VideoViewController!
     
-    let video_files:[String] = ["vid_1_blended", "vid_2_blended"]
-    let json_files:[String] = ["polygons_vid_1", "polygons_vid_2"]
+    let video_files:[String] = [
+        "gameplay_video_1",
+        "gameplay_video_2",
+        "gameplay_video_3"
+    ]
+    let json_files:[String] = [
+        "polygons_video_1",
+        "polygons_video_2",
+        "polygons_video_3"
+    ]
     
-    let vid_heights:[Double] = [520, 576]
-    let vid_widths:[Double] = [1024, 1024]
+    let vid_heights:[Double] = [1080, 1080, 1080]
+    let vid_widths:[Double] = [1920, 1920, 1920]
     
-    @IBAction func video_1_view(_ sender: Any) {
-        switch_view_func(index: 0)
-    }
-    @IBAction func video_2_view(_ sender: Any) {
-        switch_view_func(index: 1)
-    }
-    @IBAction func video_1_play_view(_ sender: Any) {
-        switch_view_func_2(index: 0)
-    }
-    @IBAction func video_2_play_view(_ sender: Any) {
-        switch_view_func_2(index: 1)
-    }
+    let vid_net_out_rat_hs:[Double] = [1.875, 1.875, 1.875]
+    let vid_net_out_rat_ws:[Double] = [1.875, 1.875, 1.875]
+    
     @IBAction func play_vid_1(_ sender: Any) {
         switch_view_func_3(index: 0)
     }
     @IBAction func play_vid_2(_ sender: Any) {
         switch_view_func_3(index: 1)
+    }
+    @IBAction func play_vid_3(_ sender: Any) {
+        switch_view_func_3(index: 2)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -93,6 +95,8 @@ class ViewController: UIViewController {
         vc.json_file = json_files[index]
         vc.vid_height = vid_heights[index]
         vc.vid_width = vid_widths[index]
+        vc.vid_net_out_rat_h = vid_net_out_rat_hs[index]
+        vc.vid_net_out_rat_w = vid_net_out_rat_ws[index]
         present(vc, animated: true)
     }
     

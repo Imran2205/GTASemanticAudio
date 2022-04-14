@@ -21,6 +21,9 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var vid_height = 0.0
     var vid_width = 0.0
     
+    var vid_net_out_rat_h = 1.0
+    var vid_net_out_rat_w = 1.0
+    
     var vid_container_height = 350.0
     var vid_container_width = 350.0
     
@@ -29,6 +32,8 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var point_offset_w = 0.0
     var original_frame_wodth = 690.0
+    
+    var video_frames = 0
     
     var img_id = 0
     var json_polygon_data = JsonData(frame_data: [FrameData(frame: "", classes: [Classes(class_id: 0, class_name: "", color: [0], contours: [[[0]]])])])
@@ -57,16 +62,16 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     @IBAction func slider_value_changed(_ sender: Any) {
-        player?.pause()
+        // player?.pause()
         let seconds : Int64 = Int64(vid_progress_slider.value)
         let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
         
         player!.seek(to: targetTime, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
         
-        //if player!.rate == 0
-        //{
-        //    player?.play()
-        //}
+        // if player!.rate == 0
+        // {
+        //     player?.play()
+        // }
         self.remove_views()
     }
     
@@ -93,13 +98,20 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         img_to_frame_rat_h = vid_height/vid_container_height
         img_to_frame_rat_w = vid_width/vid_container_width
         
+        /* print(vid_width)
+        print(vid_height)
+        print(vid_container_width)
+        print(vid_container_height)
+        print(img_to_frame_rat_w)
+        print(img_to_frame_rat_h) */
+        
         point_offset_w = (original_frame_wodth - vid_container_width) / 2.0
         
         if let localData = self.readLocalFile(forName: json_file) {
             self.json_polygon_data = self.parse(jsonData: localData)
         }
         
-        let video_path = Bundle.main.url(forResource: video_file, withExtension: "mp4")
+        let video_path = Bundle.main.url(forResource: video_file, withExtension: "mov")
         
         player = AVPlayer(url: video_path!)
         currentTime = Float((player.currentItem?.currentTime().seconds)!)
@@ -115,6 +127,8 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 
         let duration : CMTime = asset!.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
+        
+        video_frames = Int(Float64(fps) * seconds) - 1
         
         vid_progress_slider.maximumValue = Float(seconds)
         print(seconds)
@@ -156,13 +170,13 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     @IBAction func stop(_ sender: Any) {
         self.paused = true
         player?.pause()
-        usleep(100000)
+        // usleep(1000000)
         self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
-        self.img_id = Int(self.currentTime*self.fps)
-        if (Float(self.img_id) > (self.currentTime*self.fps)){
-            self.img_id = self.img_id - 1
+        self.img_id = Int(self.currentTime*self.fps) + 1
+        if(self.img_id > self.video_frames){
+            self.img_id = self.video_frames
         }
-        print(self.img_id)
+        //print(self.img_id)
         self.show_image()
     }
     
@@ -181,7 +195,7 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 for contour in cls.contours {
                     var button_points: [CGPoint] = []
                     for pnt in contour {
-                        let p = CGPoint(x: (Double(pnt[0])/img_to_frame_rat_w + 1 + point_offset_w), y: (Double(pnt[1])/img_to_frame_rat_h + 1))
+                        let p = CGPoint(x: (Double(pnt[0]) * vid_net_out_rat_w / img_to_frame_rat_w + 1 + point_offset_w), y: (Double(pnt[1]) * vid_net_out_rat_h / img_to_frame_rat_h + 1))
                         button_points.append(p)
                     }
                     let polygon = PolyButton(points: button_points,
@@ -261,13 +275,13 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.paused = !self.paused
         if(self.paused){
             player?.pause()
-            usleep(100000)
+            // usleep(1000000)
             self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
-            self.img_id = Int(self.currentTime*self.fps)
-            if (Float(self.img_id) > (self.currentTime*self.fps)){
-                self.img_id = self.img_id - 1
+            self.img_id = Int(self.currentTime*self.fps) + 1
+            if(self.img_id > self.video_frames){
+                self.img_id = self.video_frames
             }
-            print(self.img_id)
+            //print(self.img_id)
             self.show_image()
         }
         else{
