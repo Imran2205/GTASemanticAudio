@@ -14,8 +14,8 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var video_file:String = ""
     var json_file:String = ""
-    var currentTime:Float = 0.0
-    var fps:Float = 0.0
+    var currentTime:Float64 = 0.0
+    var fps:Float64 = 0.0
     var paused:Bool = true
     
     var vid_height = 0.0
@@ -114,10 +114,10 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         let video_path = Bundle.main.url(forResource: video_file, withExtension: "mov")
         
         player = AVPlayer(url: video_path!)
-        currentTime = Float((player.currentItem?.currentTime().seconds)!)
+        currentTime = Float64((player.currentItem?.currentTime().seconds)!)
         let asset = player.currentItem?.asset
         let tracks = asset?.tracks(withMediaType: .video)
-        fps = (tracks?.first!.nominalFrameRate)!
+        fps = Float64((tracks?.first!.nominalFrameRate)!)
     
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.image_button_view.bounds
@@ -171,12 +171,15 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.paused = true
         player?.pause()
         // usleep(1000000)
-        self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
+        self.currentTime = Float64((self.player.currentItem?.currentTime().seconds)!)
         self.img_id = Int(self.currentTime*self.fps)
         if(self.img_id > self.video_frames){
             self.img_id = self.video_frames
         }
-        //print(self.img_id)
+        if(self.img_id < 0){
+            self.img_id = 0
+        }
+        print(self.currentTime)
         self.show_image()
     }
     
@@ -276,12 +279,15 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         if(self.paused){
             player?.pause()
             // usleep(1000000)
-            self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
+            self.currentTime = Float64((self.player.currentItem?.currentTime().seconds)!)
             self.img_id = Int(self.currentTime*self.fps)
             if(self.img_id > self.video_frames){
                 self.img_id = self.video_frames
             }
-            //print(self.img_id)
+            if(self.img_id < 0){
+                self.img_id = 0
+            }
+            print(self.currentTime)
             self.show_image()
         }
         else{
