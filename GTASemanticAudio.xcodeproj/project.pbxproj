@@ -11,11 +11,12 @@
 		2B1AB3742804794100536112 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AB3732804794100536112 /* VideoPlayerViewController.swift */; };
 		2B1CACA12808812500D62347 /* polygons_video_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACA02808812500D62347 /* polygons_video_1.json */; };
 		2B1CACA32808D32600D62347 /* polygons_video_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACA22808D32600D62347 /* polygons_video_3.json */; };
+		2B1CACA52808EC2B00D62347 /* polygons_video_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACA42808EC2B00D62347 /* polygons_video_2.json */; };
+		2B1CACA72808EC7200D62347 /* gameplay_video_2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACA62808EC7200D62347 /* gameplay_video_2.mov */; };
+		2B1CACA92808EC7900D62347 /* gameplay_video_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACA82808EC7900D62347 /* gameplay_video_1.mov */; };
+		2B1CACAB2808EC7F00D62347 /* gameplay_video_3.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B1CACAA2808EC7F00D62347 /* gameplay_video_3.mov */; };
 		2B21372C27FDEA8000082389 /* PolyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B21372B27FDEA8000082389 /* PolyButton.swift */; };
 		2B22713F27FCC01B007AEF20 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */; };
-		2B37F08428086BDB00DC22E2 /* gameplay_video_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B37F08328086BDB00DC22E2 /* gameplay_video_1.mov */; };
-		2B37F08628086BE000DC22E2 /* gameplay_video_2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B37F08528086BE000DC22E2 /* gameplay_video_2.mov */; };
-		2B37F08828086BE500DC22E2 /* gameplay_video_3.mov in Resources */ = {isa = PBXBuildFile; fileRef = 2B37F08728086BE500DC22E2 /* gameplay_video_3.mov */; };
 		2B99BC1B27FDC70800E993A0 /* JSONStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B99BC1A27FDC70800E993A0 /* JSONStruct.swift */; };
 		2BC8F37527FB6E7400C2B92F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */; };
 		2BC8F37727FB6E7400C2B92F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */; };
@@ -34,11 +35,12 @@
 		2B1AB3732804794100536112 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		2B1CACA02808812500D62347 /* polygons_video_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_video_1.json; path = ../../../../../../Downloads/video_for_app/gameplay_video_1/polygons_video_1.json; sourceTree = "<group>"; };
 		2B1CACA22808D32600D62347 /* polygons_video_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_video_3.json; path = ../../../../../../Downloads/video_for_app/gameplay_video_3/polygons_video_3.json; sourceTree = "<group>"; };
+		2B1CACA42808EC2B00D62347 /* polygons_video_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = polygons_video_2.json; path = ../../../../../../Downloads/video_for_app/gameplay_video_2/polygons_video_2.json; sourceTree = "<group>"; };
+		2B1CACA62808EC7200D62347 /* gameplay_video_2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_2.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_2/gameplay_video_2.mov; sourceTree = "<group>"; };
+		2B1CACA82808EC7900D62347 /* gameplay_video_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_1.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_1/gameplay_video_1.mov; sourceTree = "<group>"; };
+		2B1CACAA2808EC7F00D62347 /* gameplay_video_3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_3.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_3/gameplay_video_3.mov; sourceTree = "<group>"; };
 		2B21372B27FDEA8000082389 /* PolyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyButton.swift; sourceTree = "<group>"; };
 		2B22713E27FCC01B007AEF20 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		2B37F08328086BDB00DC22E2 /* gameplay_video_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_1.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_1.mov; sourceTree = "<group>"; };
-		2B37F08528086BE000DC22E2 /* gameplay_video_2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_2.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_2.mov; sourceTree = "<group>"; };
-		2B37F08728086BE500DC22E2 /* gameplay_video_3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = gameplay_video_3.mov; path = ../../../../../../Downloads/video_for_app/gameplay_video_3.mov; sourceTree = "<group>"; };
 		2B99BC1A27FDC70800E993A0 /* JSONStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStruct.swift; sourceTree = "<group>"; };
 		2BC8F37127FB6E7400C2B92F /* GTASemanticAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTASemanticAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,10 +86,11 @@
 		2BC8F37327FB6E7400C2B92F /* GTASemanticAudio */ = {
 			isa = PBXGroup;
 			children = (
-				2B37F08328086BDB00DC22E2 /* gameplay_video_1.mov */,
-				2B37F08528086BE000DC22E2 /* gameplay_video_2.mov */,
-				2B37F08728086BE500DC22E2 /* gameplay_video_3.mov */,
+				2B1CACA82808EC7900D62347 /* gameplay_video_1.mov */,
+				2B1CACA62808EC7200D62347 /* gameplay_video_2.mov */,
+				2B1CACAA2808EC7F00D62347 /* gameplay_video_3.mov */,
 				2B1CACA02808812500D62347 /* polygons_video_1.json */,
+				2B1CACA42808EC2B00D62347 /* polygons_video_2.json */,
 				2B1CACA22808D32600D62347 /* polygons_video_3.json */,
 				2BC8F37427FB6E7400C2B92F /* AppDelegate.swift */,
 				2BC8F37627FB6E7400C2B92F /* SceneDelegate.swift */,
@@ -167,17 +170,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B37F08428086BDB00DC22E2 /* gameplay_video_1.mov in Resources */,
-				2B37F08828086BE500DC22E2 /* gameplay_video_3.mov in Resources */,
 				2BCB5F6E2802B3E200079289 /* VideoScreen.storyboard in Resources */,
 				2BC8F38127FB6E7500C2B92F /* LaunchScreen.storyboard in Resources */,
-				2B37F08628086BE000DC22E2 /* gameplay_video_2.mov in Resources */,
 				2BC8F37E27FB6E7500C2B92F /* Assets.xcassets in Resources */,
 				2BCB5F7A2803544100079289 /* VideoFrameScreen.storyboard in Resources */,
+				2B1CACAB2808EC7F00D62347 /* gameplay_video_3.mov in Resources */,
 				2B1CACA32808D32600D62347 /* polygons_video_3.json in Resources */,
+				2B1CACA72808EC7200D62347 /* gameplay_video_2.mov in Resources */,
 				2BC8F37C27FB6E7400C2B92F /* Main.storyboard in Resources */,
+				2B1CACA92808EC7900D62347 /* gameplay_video_1.mov in Resources */,
 				2B1CACA12808812500D62347 /* polygons_video_1.json in Resources */,
 				2B1AB372280478B000536112 /* VideoPlayer.storyboard in Resources */,
+				2B1CACA52808EC2B00D62347 /* polygons_video_2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

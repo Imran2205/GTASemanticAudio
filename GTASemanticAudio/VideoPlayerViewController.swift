@@ -172,7 +172,7 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
         player?.pause()
         // usleep(1000000)
         self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
-        self.img_id = Int(self.currentTime*self.fps) + 1
+        self.img_id = Int(self.currentTime*self.fps)
         if(self.img_id > self.video_frames){
             self.img_id = self.video_frames
         }
@@ -277,7 +277,7 @@ class VideoPlayerViewController: UIViewController, AVSpeechSynthesizerDelegate {
             player?.pause()
             // usleep(1000000)
             self.currentTime = Float((self.player.currentItem?.currentTime().seconds)!)
-            self.img_id = Int(self.currentTime*self.fps) + 1
+            self.img_id = Int(self.currentTime*self.fps)
             if(self.img_id > self.video_frames){
                 self.img_id = self.video_frames
             }
